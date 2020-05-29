@@ -5,8 +5,8 @@ import lombok.Data;
 
 @Data
 @Builder
-public class EmaiilNotification {
-	
+public class EmailNotification {
+	private String firstName;
 	private String messageText;
 	private String email;
 

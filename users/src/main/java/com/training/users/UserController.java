@@ -32,7 +32,7 @@ public class UserController {
 	}
 
 	@PostMapping("users")
-	public ResponseEntity<String> addUser(@RequestBody User user, @RequestHeader("Authorization") String authHeader) {
+	public ResponseEntity<String> addUser(@RequestBody User user) {
 
 		userService.addUser(user);
 		BodyBuilder response = ResponseEntity.status(HttpStatus.CREATED);

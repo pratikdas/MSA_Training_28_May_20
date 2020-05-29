@@ -13,16 +13,15 @@ public class UserService {
 	
 	
 	@Autowired
-	private NotiifierIntegrator notiifierIntegrator;
+	private NotifyIntegrator notifyIntegrator;
 
 	
 	public void addUser(User user) {
 		userRepository.save(user);
 		
+		String messageText = "User is created";
 		
-		EmaiilNotification emaiilNotification = EmaiilNotification.builder().build();;
-		// TODO invoke notifier API
-		notiifierIntegrator.sendEmail(emaiilNotification );
+		notifyIntegrator.sendEmail(user.getFirstName(), messageText , user.getEmail() );
 	}
 	
 	public List<User> getUsers() {

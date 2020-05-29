@@ -1,0 +1,19 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: notifier-svc-deployment
+spec:
+  selector:
+    matchLabels:
+      app: catalog
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: notifier
+    spec:
+      containers:
+      - name: notifierservice
+        image: notifierservice:1.0
+        ports:
+        - containerPort: 8081
